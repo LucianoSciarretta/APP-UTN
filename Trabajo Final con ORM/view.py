@@ -4,7 +4,23 @@ from model import Crud, Aux
 from tkcalendar import Calendar
 
 class Window(Crud, Aux):
+    
+    """
+    Clase que representa la ventana principal de la aplicación.
+
+    Hereda de las clases Crud y Aux para realizar operaciones CRUD y
+    utilizar funciones auxiliares.
+    """
+    
     def __init__(self, root):  
+        
+        """
+        Inicializa la ventana principal.
+
+        :param root: Objeto Tkinter que representa la ventana principal.
+        :type root: Tk
+        """
+        
         super().__init__()
         self.root = root                   
         
@@ -78,6 +94,7 @@ class Window(Crud, Aux):
         ############################################
 
         def change_selected_row_color(event):
+            # Función para cambiar el color de la fila seleccionada
             selected_item = tree.selection()
             if selected_item:
                 tree.tag_configure("selected", background=btn_hover_bg, foreground=btn_text)

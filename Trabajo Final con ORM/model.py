@@ -5,14 +5,18 @@ import re
 import winsound
 from peewee import *
 
-db = SqliteDatabase("Trabajo UTN ORM.DB")
 
+db = SqliteDatabase("Trabajo UTN ORM.DB")
+# Crea o conecta a la base de datos SQLite
 class BaseModel(Model):
     class Meta:
         database = db
+        
 
-#Cuando se instancia la clase Items se genera un nuevo registro en la tabla Items
 class Items(BaseModel):
+    # Definine el modelo de datos para la tabla Items
+    #Cuando se instancia la clase Items se genera un nuevo registro en la tabla Items
+    
     product_name = CharField(unique = True)
     quantity = CharField()
     price = IntegerField()
@@ -29,7 +33,7 @@ except Exception as e:
     print(f"Error general en la creación/conexión con la base de datos: {e}")
    
    
-#Tablas
+# Intentar crear la tabla Items en la base de datos
 try:    
     db.create_tables([Items])
 except OperationalError as error:
@@ -46,10 +50,30 @@ finally:
         
 class Crud():
     
+    """
+    Clase que proporciona funciones CRUD para interactuar con la base de datos.
+    """
+    
     def __init__(self,):
         self.cal_selected = ""
     
     def add(self, product_name, quantity, price, room_name, description, due_date, tree_param, s_option, root):
+        
+        """
+        Agrega un nuevo elemento a la base de datos y actualiza el Treeview.
+
+        :param product_name: Nombre del producto.
+        :param quantity: Cantidad del producto.
+        :param price: Precio del producto.
+        :param room_name: Nombre de la habitación.
+        :param description: Descripción del producto.
+        :param due_date: Fecha de vencimiento del producto.
+        :param tree_param: Objeto Treeview para actualizar.
+        :param s_option: Opción de orden para la actualización del Treeview.
+        :param root: Ventana principal de la aplicación.
+        """
+        
+        
         item = Items()
         aux = Aux()
         item.product_name = product_name
@@ -86,6 +110,22 @@ class Crud():
             )
             
     def modify(self, tree_param, var_due_date_param, var_product_name_param, var_quantity_param, var_room_name_param, var_description_param, var_price_param, root, s_option):
+        
+        """
+        Modifica un elemento existente en la base de datos y actualiza el Treeview.
+
+        :param tree_param: Objeto Treeview para actualizar.
+        :param var_due_date_param: Variable de control para la fecha de vencimiento.
+        :param var_product_name_param: Variable de control para el nombre del producto.
+        :param var_quantity_param: Variable de control para la cantidad del producto.
+        :param var_room_name_param: Variable de control para el nombre de la habitación.
+        :param var_description_param: Variable de control para la descripción del producto.
+        :param var_price_param: Variable de control para el precio del producto.
+        :param root: Ventana principal de la aplicación.
+        :param s_option: Opción de orden para la actualización del Treeview.
+        """
+        
+        
         aux = Aux()
         value = tree_param.selection()
         if not value:
@@ -121,6 +161,13 @@ class Crud():
 
     def delete(self, tree_param, root):
       
+        """
+        Elimina un elemento de la base de datos y actualiza el Treeview.
+
+        :param tree_param: Elemento del Treeview para actualizar.
+        :param root: Ventana principal de la aplicación.
+        """
+      
         value = tree_param.selection()
         if not value:
             messagebox.showerror(
@@ -134,6 +181,14 @@ class Crud():
         self.update_treeview(tree_param, 1)
         
     def update_treeview(self, my_treeview, s_option):
+        
+        """
+        Actualiza el Treeview con los datos de la base de datos.
+
+        :param my_treeview: Objeto Treeview para actualizar.
+        :param s_option: Al elegir un radio button se le asigna un número a esta variable que está asociado a una query específica de tipo SELECT.
+        """
+        
         items = my_treeview.get_children()
         query = Items.select().order_by(Items.id.asc())
       
@@ -162,6 +217,21 @@ class Crud():
             my_treeview.delete(item)
 
     def tree_selection(self, product_name, quantity, price, room_name, description, date,  tree_param, event ): 
+        
+        """
+        Actualiza las variables de control con la selección actual del Treeview.
+
+        :param product_name: Variable de control para el nombre del producto.
+        :param quantity: Variable de control para la cantidad del producto.
+        :param price: Variable de control para el precio del producto.
+        :param room_name: Variable de control para el nombre de la habitación.
+        :param description: Variable de control para la descripción del producto.
+        :param date: Variable de control para la fecha de vencimiento del producto.
+        :param tree_param: Objeto Treeview que contiene los datos.
+        :param event: Evento de selección en el Treeview.
+        """
+        
+        
         selected_item = tree_param.selection()
         
         if selected_item:
@@ -187,37 +257,92 @@ class Crud():
 
 class Aux:
     
-    # DATE CONVERTER
-    # english format to spanish format
+    """
+    Clase con funciones auxiliares.
+    """
     
-    # def dd_mm_yyyy(self, date):
-    #     en_date = date.split("/")
-    #     en_date[0], en_date[2] = en_date[2], en_date[0]
-    #     spanish_date = "/".join(en_date)
-    #     return spanish_date
+    
+    
+    
+    
+    def dd_mm_yyyy(self, date):
+        """
+        Estos métodos los usaba antes PARA formatear fechas de la db al treeview. 
+        Ahora lo manejo con los métodos de PEEWEE.
+        
+        
+        english format to spanish format:
+        
+        """
+        en_date = date.split("/")
+        en_date[0], en_date[2] = en_date[2], en_date[0]
+        spanish_date = "/".join(en_date)
+        return spanish_date
 
-    #     # spanish format to english format
+        # spanish format to english format:
 
-    # def yyyy_mm_dd(self, date):
-    #     sp_date = date.split("/")
-    #     sp_date[0], sp_date[2] = sp_date[2], sp_date[0]
-    #     en_date = "/".join(sp_date)
-    #     return en_date
+    def yyyy_mm_dd(self, date):
+        sp_date = date.split("/")
+        sp_date[0], sp_date[2] = sp_date[2], sp_date[0]
+        en_date = "/".join(sp_date)
+        return en_date
 
     def add_slash(self, event, date_entry):
+        
+        """
+        Agrega las  barras automáticamente para respetar el formato de fecha dd/mm/yyyyr.
+
+        :param event: Evento de teclado.
+        :param date_entry: Entrada de texto para la fecha.
+        """
+        
         if len(date_entry.get()) in (2, 5):
             date_entry.insert("end", "/")
 
     def hover(self, event, color1, color2):
+        
+        """
+        Cambia el color de fondo y el color del texto al pasar el mouse sobre un widget.
+
+        :param event: Evento de movimiento del mouse.
+        :param color1: Color de fondo al pasar el mouse.
+        :param color2: Color del texto al pasar el mouse.
+        """
+        
         event.widget.config(bg=color1, fg=color2)
 
     def leave_hover(self, event,  color1, color2):
+        
+        """
+        Restaura el color de fondo y el color del texto cuando el mouse deja el widget.
+
+        :param event: Evento de salida del mouse.
+        :param color1: Color de fondo normal.
+        :param color2: Color del texto normal.
+        """
+        
         event.widget.config(bg=color1, fg=color2)
 
     def kill_window(self, w):
+        
+        """
+        Cierra una ventana.
+
+        :param w: Ventana a cerrar.
+        """
         w.destroy()
 
     def show_message(self, title, message, root_param):
+        """
+        Muestra un mensaje emergente.
+        Este método lo creé para evitar la molestia de estar cerrando los mensajes emergentes manualmente.
+        
+        
+        :param title: Título del mensaje.
+        :param message: Contenido del mensaje.
+        :param root_param: Ventana principal de la aplicación.
+        """
+        
         msg = Toplevel(root_param)
         msg.title(title)
 
@@ -241,6 +366,15 @@ class Aux:
         msg.after(300, msg.destroy)
 
     def date_validator(self, due_date):
+        
+        """
+        Valida el formato de fecha con una expresión regular..
+
+        :param due_date: Fecha a validar.
+        :return: True si la fecha tiene el formato correcto, False de lo contrario.
+        """
+        
+        
         regular_expression = "\d{2}\/\d{2}\/\d{4}$"
         if re.match(regular_expression, due_date):
             return True
