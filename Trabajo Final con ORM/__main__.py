@@ -8,7 +8,7 @@ def main_view(root):
     Función principal para iniciar la interfaz gráfica.
 
     :root: Objeto Tkinter que representa la ventana principal.
-    :type root: Tk
+    
     
     """
     window = Window(root)

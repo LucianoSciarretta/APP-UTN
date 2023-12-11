@@ -9,6 +9,7 @@ from peewee import *
 db = SqliteDatabase("Trabajo UTN ORM.DB")
 # Crea o conecta a la base de datos SQLite
 class BaseModel(Model):
+    
     class Meta:
         database = db
         
@@ -94,7 +95,7 @@ class Crud():
         except ValueError as error:
          messagebox.showerror(
                 "Error",
-                "Formato de fecha inválido \nIngrese la fecha en formato DD/MM/AAAA", error
+                "Formato de fecha inválido \nIngrese la fecha en formato DD/MM/AAAA"
          )
          return
         

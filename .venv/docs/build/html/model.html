@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo model &mdash; documentación de Trabajo Final UTN - 0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=9c9b61ad"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=efdbd0b9"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Módulo view" href="view.html" />
+    <link rel="prev" title="Módulo Main" href="controller.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Trabajo Final UTN
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="description.html">Descripción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="controller.html">Módulo Main</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Módulo model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#model.Aux"><code class="docutils literal notranslate"><span class="pre">Aux</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#model.Aux.add_slash"><code class="docutils literal notranslate"><span class="pre">Aux.add_slash()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Aux.date_validator"><code class="docutils literal notranslate"><span class="pre">Aux.date_validator()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Aux.dd_mm_yyyy"><code class="docutils literal notranslate"><span class="pre">Aux.dd_mm_yyyy()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Aux.empty_entries"><code class="docutils literal notranslate"><span class="pre">Aux.empty_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Aux.hover"><code class="docutils literal notranslate"><span class="pre">Aux.hover()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Aux.kill_window"><code class="docutils literal notranslate"><span class="pre">Aux.kill_window()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Aux.leave_hover"><code class="docutils literal notranslate"><span class="pre">Aux.leave_hover()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Aux.show_message"><code class="docutils literal notranslate"><span class="pre">Aux.show_message()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Aux.yyyy_mm_dd"><code class="docutils literal notranslate"><span class="pre">Aux.yyyy_mm_dd()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#model.BaseModel"><code class="docutils literal notranslate"><span class="pre">BaseModel</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#model.BaseModel.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">BaseModel.DoesNotExist</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.BaseModel.id"><code class="docutils literal notranslate"><span class="pre">BaseModel.id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#model.Crud"><code class="docutils literal notranslate"><span class="pre">Crud</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#model.Crud.add"><code class="docutils literal notranslate"><span class="pre">Crud.add()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Crud.cal_selection"><code class="docutils literal notranslate"><span class="pre">Crud.cal_selection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Crud.delete"><code class="docutils literal notranslate"><span class="pre">Crud.delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Crud.modify"><code class="docutils literal notranslate"><span class="pre">Crud.modify()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Crud.tree_selection"><code class="docutils literal notranslate"><span class="pre">Crud.tree_selection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Crud.update_treeview"><code class="docutils literal notranslate"><span class="pre">Crud.update_treeview()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#model.Items"><code class="docutils literal notranslate"><span class="pre">Items</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#model.Items.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Items.DoesNotExist</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Items.description"><code class="docutils literal notranslate"><span class="pre">Items.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Items.due_date"><code class="docutils literal notranslate"><span class="pre">Items.due_date</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Items.id"><code class="docutils literal notranslate"><span class="pre">Items.id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Items.price"><code class="docutils literal notranslate"><span class="pre">Items.price</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Items.product_name"><code class="docutils literal notranslate"><span class="pre">Items.product_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Items.quantity"><code class="docutils literal notranslate"><span class="pre">Items.quantity</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.Items.room_name"><code class="docutils literal notranslate"><span class="pre">Items.room_name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="view.html">Módulo view</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Trabajo Final UTN</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Módulo model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/model.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-model">
+<span id="modulo-model"></span><h1>Módulo model<a class="headerlink" href="#module-model" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="model.Aux">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Aux</span></span><a class="headerlink" href="#model.Aux" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase con funciones auxiliares.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Aux.add_slash">
+<span class="sig-name descname"><span class="pre">add_slash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_entry</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Aux.add_slash" title="Link to this definition"></a></dt>
+<dd><p>Agrega las  barras automáticamente para respetar el formato de fecha dd/mm/yyyyr.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – Evento de teclado.</p></li>
+<li><p><strong>date_entry</strong> – Entrada de texto para la fecha.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Aux.date_validator">
+<span class="sig-name descname"><span class="pre">date_validator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">due_date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Aux.date_validator" title="Link to this definition"></a></dt>
+<dd><p>Valida el formato de fecha con una expresión regular..</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>due_date</strong> – Fecha a validar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>True si la fecha tiene el formato correcto, False de lo contrario.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Aux.dd_mm_yyyy">
+<span class="sig-name descname"><span class="pre">dd_mm_yyyy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Aux.dd_mm_yyyy" title="Link to this definition"></a></dt>
+<dd><p>Estos métodos los usaba antes PARA formatear fechas de la db al treeview. 
+Ahora lo manejo con los métodos de PEEWEE.</p>
+<p>english format to spanish format:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Aux.empty_entries">
+<span class="sig-name descname"><span class="pre">empty_entries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Aux.empty_entries" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Aux.hover">
+<span class="sig-name descname"><span class="pre">hover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Aux.hover" title="Link to this definition"></a></dt>
+<dd><p>Cambia el color de fondo y el color del texto al pasar el mouse sobre un widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – Evento de movimiento del mouse.</p></li>
+<li><p><strong>color1</strong> – Color de fondo al pasar el mouse.</p></li>
+<li><p><strong>color2</strong> – Color del texto al pasar el mouse.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Aux.kill_window">
+<span class="sig-name descname"><span class="pre">kill_window</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Aux.kill_window" title="Link to this definition"></a></dt>
+<dd><p>Cierra una ventana.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>w</strong> – Ventana a cerrar.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Aux.leave_hover">
+<span class="sig-name descname"><span class="pre">leave_hover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Aux.leave_hover" title="Link to this definition"></a></dt>
+<dd><p>Restaura el color de fondo y el color del texto cuando el mouse deja el widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – Evento de salida del mouse.</p></li>
+<li><p><strong>color1</strong> – Color de fondo normal.</p></li>
+<li><p><strong>color2</strong> – Color del texto normal.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Aux.show_message">
+<span class="sig-name descname"><span class="pre">show_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root_param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Aux.show_message" title="Link to this definition"></a></dt>
+<dd><p>Muestra un mensaje emergente.
+Este método lo creé para evitar la molestia de estar cerrando los mensajes emergentes manualmente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> – Título del mensaje.</p></li>
+<li><p><strong>message</strong> – Contenido del mensaje.</p></li>
+<li><p><strong>root_param</strong> – Ventana principal de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Aux.yyyy_mm_dd">
+<span class="sig-name descname"><span class="pre">yyyy_mm_dd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Aux.yyyy_mm_dd" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="model.BaseModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">BaseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.BaseModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.BaseModel.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#model.BaseModel.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>alias de <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModelDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.BaseModel.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;AutoField:</span> <span class="pre">BaseModel.id&gt;</span></em><a class="headerlink" href="#model.BaseModel.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="model.Crud">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Crud</span></span><a class="headerlink" href="#model.Crud" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase que proporciona funciones CRUD para interactuar con la base de datos.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Crud.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Crud.add" title="Link to this definition"></a></dt>
+<dd><p>Agrega un nuevo elemento a la base de datos y actualiza el Treeview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>product_name</strong> – Nombre del producto.</p></li>
+<li><p><strong>quantity</strong> – Cantidad del producto.</p></li>
+<li><p><strong>price</strong> – Precio del producto.</p></li>
+<li><p><strong>room_name</strong> – Nombre de la habitación.</p></li>
+<li><p><strong>description</strong> – Descripción del producto.</p></li>
+<li><p><strong>due_date</strong> – Fecha de vencimiento del producto.</p></li>
+<li><p><strong>tree_param</strong> – Objeto Treeview para actualizar.</p></li>
+<li><p><strong>s_option</strong> – Opción de orden para la actualización del Treeview.</p></li>
+<li><p><strong>root</strong> – Ventana principal de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Crud.cal_selection">
+<span class="sig-name descname"><span class="pre">cal_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cal_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Crud.cal_selection" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Crud.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Crud.delete" title="Link to this definition"></a></dt>
+<dd><p>Elimina un elemento de la base de datos y actualiza el Treeview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree_param</strong> – Elemento del Treeview para actualizar.</p></li>
+<li><p><strong>root</strong> – Ventana principal de la aplicación.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Crud.modify">
+<span class="sig-name descname"><span class="pre">modify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_due_date_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_product_name_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_quantity_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_room_name_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_description_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_price_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_option</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Crud.modify" title="Link to this definition"></a></dt>
+<dd><p>Modifica un elemento existente en la base de datos y actualiza el Treeview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree_param</strong> – Objeto Treeview para actualizar.</p></li>
+<li><p><strong>var_due_date_param</strong> – Variable de control para la fecha de vencimiento.</p></li>
+<li><p><strong>var_product_name_param</strong> – Variable de control para el nombre del producto.</p></li>
+<li><p><strong>var_quantity_param</strong> – Variable de control para la cantidad del producto.</p></li>
+<li><p><strong>var_room_name_param</strong> – Variable de control para el nombre de la habitación.</p></li>
+<li><p><strong>var_description_param</strong> – Variable de control para la descripción del producto.</p></li>
+<li><p><strong>var_price_param</strong> – Variable de control para el precio del producto.</p></li>
+<li><p><strong>root</strong> – Ventana principal de la aplicación.</p></li>
+<li><p><strong>s_option</strong> – Opción de orden para la actualización del Treeview.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Crud.tree_selection">
+<span class="sig-name descname"><span class="pre">tree_selection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">product_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quantity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">price</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Crud.tree_selection" title="Link to this definition"></a></dt>
+<dd><p>Actualiza las variables de control con la selección actual del Treeview.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>product_name</strong> – Variable de control para el nombre del producto.</p></li>
+<li><p><strong>quantity</strong> – Variable de control para la cantidad del producto.</p></li>
+<li><p><strong>price</strong> – Variable de control para el precio del producto.</p></li>
+<li><p><strong>room_name</strong> – Variable de control para el nombre de la habitación.</p></li>
+<li><p><strong>description</strong> – Variable de control para la descripción del producto.</p></li>
+<li><p><strong>date</strong> – Variable de control para la fecha de vencimiento del producto.</p></li>
+<li><p><strong>tree_param</strong> – Objeto Treeview que contiene los datos.</p></li>
+<li><p><strong>event</strong> – Evento de selección en el Treeview.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="model.Crud.update_treeview">
+<span class="sig-name descname"><span class="pre">update_treeview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">my_treeview</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_option</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Crud.update_treeview" title="Link to this definition"></a></dt>
+<dd><p>Actualiza el Treeview con los datos de la base de datos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>my_treeview</strong> – Objeto Treeview para actualizar.</p></li>
+<li><p><strong>s_option</strong> – Al elegir un radio button se le asigna un número a esta variable que está asociado a una query específica de tipo SELECT.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="model.Items">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">Items</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.Items" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#model.BaseModel" title="model.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.Items.DoesNotExist">
+<span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#model.Items.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>alias de <code class="xref py py-class docutils literal notranslate"><span class="pre">ItemsDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.Items.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Items.description&gt;</span></em><a class="headerlink" href="#model.Items.description" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.Items.due_date">
+<span class="sig-name descname"><span class="pre">due_date</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;DateField:</span> <span class="pre">Items.due_date&gt;</span></em><a class="headerlink" href="#model.Items.due_date" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.Items.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;AutoField:</span> <span class="pre">Items.id&gt;</span></em><a class="headerlink" href="#model.Items.id" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.Items.price">
+<span class="sig-name descname"><span class="pre">price</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;IntegerField:</span> <span class="pre">Items.price&gt;</span></em><a class="headerlink" href="#model.Items.price" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.Items.product_name">
+<span class="sig-name descname"><span class="pre">product_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Items.product_name&gt;</span></em><a class="headerlink" href="#model.Items.product_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.Items.quantity">
+<span class="sig-name descname"><span class="pre">quantity</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Items.quantity&gt;</span></em><a class="headerlink" href="#model.Items.quantity" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="model.Items.room_name">
+<span class="sig-name descname"><span class="pre">room_name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CharField:</span> <span class="pre">Items.room_name&gt;</span></em><a class="headerlink" href="#model.Items.room_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="controller.html" class="btn btn-neutral float-left" title="Módulo Main" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="view.html" class="btn btn-neutral float-right" title="Módulo view" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2023, Luciano Sciarretta.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
